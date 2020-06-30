@@ -1,0 +1,35 @@
+﻿@model IEnumerable<CessActivityCell.Models.Event>
+
+@{
+    ViewBag.Title = "Events";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Events</h2>
+
+@if (!Model.Any())
+{
+    <p>We don't have any events yet.</p>
+}
+else
+{
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Event Name</th>
+                <th>Fee</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var evnt in Model)
+            {
+                <tr>
+                    <td>@Html.ActionLink(evnt.Name, "Detail", "Events", new { id = evnt.Id }, null)</td>
+                    <td>₹@evnt.Fee</td>
+                    <td>@evnt.Date.Value.ToShortDateString()</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

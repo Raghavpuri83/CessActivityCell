@@ -1,0 +1,48 @@
+﻿@model CessActivityCell.Models.RegistrationsViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Registrations</h2>
+
+@if (Model.Registrations.Count==0)
+{
+    <p>No Registrations Yet!</p>
+}
+else
+{
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>College</th>
+                <th>Department</th>
+                <th>Current Year</th>
+                <th>Event</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var reg in Model.Registrations)
+            {
+                <tr>
+                    <td>@reg.Name</td>
+                    <td>@reg.Email</td>
+                    <td>@reg.College</td>
+                    <td>@reg.Department</td>
+                    <td>@reg.CurrentYear</td>
+                    
+                    @foreach (var x in Model.Events)
+                    {
+                        if (x.Id == reg.EventId)
+                        {
+                            <td>@x.Name</td>
+                        }
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+}

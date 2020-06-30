@@ -1,0 +1,66 @@
+﻿@model CessActivityCell.Models.EventRegisterViewModel
+
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    List<SelectListItem> years = new List<SelectListItem>();
+    years.Add(new SelectListItem
+    {
+        Text = "First",
+        Value = "First"
+    });
+    years.Add(new SelectListItem
+    {
+        Text = "Second",
+        Value = "Second"
+    });
+    years.Add(new SelectListItem
+    {
+        Text = "Third",
+        Value = "Third"
+    });
+    years.Add(new SelectListItem
+    {
+        Text = "Forth",
+        Value = "Forth"
+    });
+}
+
+<h2 class="mb-3">Register for: <strong>@Model.Event.Name</strong></h2>
+
+@using (Html.BeginForm("CreateReg", "Events"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Registration.Name)
+        @Html.TextBoxFor(m => m.Registration.Name, new { @class = "form-control", required = "required" })
+        @Html.ValidationMessageFor(m => m.Registration.Name, "", new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Registration.Email)
+        @Html.TextBoxFor(m => m.Registration.Email, new { @class = "form-control", required = "required" })
+        @Html.ValidationMessageFor(m => m.Registration.Email, "", new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Registration.College)
+        @Html.TextBoxFor(m => m.Registration.College, new { @class = "form-control", required = "required" })
+        @Html.ValidationMessageFor(m => m.Registration.College, "", new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Registration.Department)
+        @Html.TextBoxFor(m => m.Registration.Department, new { @class = "form-control", required = "required" })
+        @Html.ValidationMessageFor(m => m.Registration.Department, "", new { @class = "text-danger" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Registration.CurrentYear)
+        @Html.DropDownListFor(m => m.Registration.CurrentYear, years, "Select Current Year", new { @class = "form-control", required = "required" })
+        @Html.ValidationMessageFor(m => m.Registration.CurrentYear, "", new { @class = "text-danger" })
+    </div>
+    <input style="display:none;" type="number" value="@Model.Event.Id" name="Registration.EventId" />
+    <button class="btn btn-primary" type="submit">Submit</button>
+}
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")

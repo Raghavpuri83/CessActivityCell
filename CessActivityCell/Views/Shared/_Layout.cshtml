@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - CESS | Computer Engineering Student Society | GNDU</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body style="padding-top:0px;">
+    @Html.Partial("_Navbar")
+
+    <div class="container mt-3 body-content">
+
+        @if (TempData["RegistrationSuccess"] != null)
+        {
+            if (TempData["RegistrationSuccess"] == "Success")
+            {
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>Registration Successful!</strong> You have successfully registered for the event!
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            }
+            else if (TempData["RegistrationSuccess"] == "Failed")
+            {
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>Registration Failed!</strong> Sorry an error occurred!
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            }
+        }
+        
+        @if (TempData["EventAdded"] != null)
+        {
+            if (TempData["EventAdded"] == "Success")
+            {
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>Event Added!</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            }
+            else if (TempData["EventAdded"] == "Failed")
+            {
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>Can't Add the Event!</strong> Sorry an error occurred!
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            }
+        }
+
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - CESS | Computer Engineering Student Society | GNDU</p>
+            <p>
+                <strong>MADE BY</strong>:
+                <br />
+                Rumeet Singh (2017CSA1175)
+                <br />
+                Raghav Puri (2017CSA1161)
+                <br />
+                Rhythm Jagota (2017CSA1168)
+                <br />
+                Richa Vasudeva (2017CSA1169)
+                <br />
+                Rohit Attri (2017CSA1174)
+            </p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

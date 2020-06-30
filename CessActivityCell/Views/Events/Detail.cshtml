@@ -1,0 +1,23 @@
+﻿@model CessActivityCell.Models.Event
+
+@{
+    ViewBag.Title = @Model.Name;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Name</h2>
+
+<div class="card border-secondary mb-3 mt-3">
+    <div class="card-header">About this Event</div>
+    <div class="card-body">
+        <h4 class="card-title">Description:</h4>
+        <p class="card-text">@Model.Description</p>
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item"><strong>Fee:</strong> ₹@Model.Fee</li>
+        <li class="list-group-item"><strong>Date:</strong> @Model.Date.Value.ToShortDateString()</li>
+        <li class="list-group-item"><strong>Venue:</strong> @Model.Venue</li>
+    </ul>
+</div>
+
+@Html.ActionLink("Register Now", "Register", "Events", new { id = Model.Id }, new { @class = "btn btn-primary" })
