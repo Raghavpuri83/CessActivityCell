@@ -1,6 +1,6 @@
 CessActivityCell
 ----------------
-Project descriptionProject descriptionCessActivityCell ( An ASP.NET MVC 5 Project ) is a project which can handle Event Registrations by Students. This project was made during my B.Tech by a team of 5 members.
+Project descriptionProject descriptionCessActivityCell ( An ASP.NET MVC 5 Project ) is a project which can handle Event Registrations by Students. This project was made by a team of 5 members during my B.Tech.
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Our Team:
